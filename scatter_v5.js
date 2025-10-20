@@ -350,6 +350,16 @@ loadFileButton.addEventListener('click', async () => {
 
 function getColor(type) {
     const colors = {
+		"Project Manager": {
+            r: 85 / 255,
+            g: 113 / 255,
+            b: 255 / 255
+        },
+        "TST specialist": {
+            r: 255 / 255,
+            g: 121 / 255,
+            b: 166 / 255
+        },
         TECHNICAL: {
             r: 85 / 255,
             g: 113 / 255,
@@ -817,3 +827,4 @@ function decryptData(encryptedData, password) {
 }
 
 //scene.debugLayer.show()
+
