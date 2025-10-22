@@ -104,7 +104,7 @@ sprite.actionManager.registerAction(new BABYLON.ExecuteCodeAction(
         let distances = sprites.filter(s => s.isVisible).map(sprite => {
             return {
                 name: sprite.name,
-                distance: cosineDistance(targetSprite.originalPosition, sprite.originalPosition)
+                distance: BABYLON.Vector3.Distance(targetSprite.originalPosition, sprite.originalPosition)
             };
         });
         distances.sort((a, b) => a.distance - b.distance);
@@ -705,7 +705,7 @@ function moveCameraToSprite(spriteName) {
         let distances = sprites.filter(s => s.isVisible).map(sprite => {
             return {
                 name: sprite.name,
-                distance: cosineDistance(targetSprite.originalPosition, sprite.originalPosition)
+                distance: BABYLON.Vector3.Distance(targetSprite.originalPosition, sprite.originalPosition)
             };
         });
         distances.sort((a, b) => a.distance - b.distance);
@@ -839,5 +839,6 @@ function decryptData(encryptedData, password) {
 }
 
 //scene.debugLayer.show()
+
 
 
