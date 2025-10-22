@@ -104,7 +104,7 @@ sprite.actionManager.registerAction(new BABYLON.ExecuteCodeAction(
         let distances = sprites.filter(s => s.isVisible).map(sprite => {
             return {
                 name: sprite.name,
-                distance: BABYLON.Vector3.Distance(targetSprite.originalPosition, sprite.originalPosition)
+                distance: cosineDistance(targetSprite.originalPosition, sprite.originalPosition)
             };
         });
         distances.sort((a, b) => a.distance - b.distance);
@@ -347,6 +347,18 @@ loadFileButton.addEventListener('click', async () => {
         }
     }
 });
+
+function cosineDistance(a, b) {
+    // Produit scalaire
+    const dot = BABYLON.Vector3.Dot(a, b);
+    // Normes
+    const normA = a.length();
+    const normB = b.length();
+    // Similarité cosinus
+    const cosSim = dot / (normA * normB);
+    // Distance cosinus
+    return 1 - cosSim;
+}
 
 function getColor(type) {
     const colors = {
@@ -693,7 +705,7 @@ function moveCameraToSprite(spriteName) {
         let distances = sprites.filter(s => s.isVisible).map(sprite => {
             return {
                 name: sprite.name,
-                distance: BABYLON.Vector3.Distance(targetSprite.originalPosition, sprite.originalPosition)
+                distance: cosineDistance(targetSprite.originalPosition, sprite.originalPosition)
             };
         });
         distances.sort((a, b) => a.distance - b.distance);
@@ -827,4 +839,5 @@ function decryptData(encryptedData, password) {
 }
 
 //scene.debugLayer.show()
+
 
